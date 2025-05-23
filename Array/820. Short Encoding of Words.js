@@ -10,22 +10,22 @@ Given an array of words, return the length of the shortest reference string s po
 
 
 /**
- * @param {string[]} words
+ *   @param {string[]} words
  * @return {number}
  */
 var minimumLengthEncoding = function(words) {
-    words.sort((a,b)=>b.lenght-a.length)
-    let wordSet= new Set(words)
+    words.sort((a, b) => b.lenght - a.length)
+    let wordSet = new Set(words)
 
-    for(let word of words){
-        for(let i=1;i< word.length;i++){
+    for (let word of words) {
+        for (let i = 1; i < word.length; i++) {
             wordSet.delete(word.substring(i))
         }
     }
 
-    let totLength=0
-    for(let word of wordSet){
-        totLength+=word.length+1;
+    let totLength = 0
+    for (let word of wordSet) {
+        totLength += word.length + 1;
     }
     return totLength
 };
