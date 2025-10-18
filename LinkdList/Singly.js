@@ -129,6 +129,46 @@ class Singly{
 
     }
 
+    reverse_list(){
+        let prev=null;
+        let current=this.head;
+        this.tail=current;
+
+        while(current){
+            const nextNode= current.next;
+            current.next=prev;
+            prev=current;
+            current=nextNode;
+        }
+
+        this.head=prev;
+        return this;
+    }
+
+    reverseRecursive(node = this.head) {
+        // Base case: empty list or last node
+        if (node === null || node.next === null) {
+            this.head = node;
+            return node;
+        }
+
+        // Recursively reverse the rest of the list
+        const newHead = this.reverseRecursive(node.next);
+
+        // Reverse the current node's pointer
+        node.next.next = node;
+        node.next = null;
+
+        // Update tail on first call
+        if (node === this.head) {
+            this.tail = node;
+        }
+
+        return newHead;
+        }
+
+
+
 
     display(){
         let print_list=[]
